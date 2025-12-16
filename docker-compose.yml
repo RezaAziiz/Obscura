@@ -1,0 +1,35 @@
+services:
+  # Service Backend
+  api:
+    build: ./imdb-clone-backend
+    container_name: imdb-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./imdb-clone-backend:/app
+      - /app/node_modules
+    environment:
+      - DATABASE_URL=postgres://user:pass@db:5432/imdb
+
+  # Service Frontend
+  web:
+    build: ./imdb-clone-frontend
+    container_name: imdb-frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./imdb-clone-frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api
+
+  # Database
+  db:
+    image: postgres:alpine
+    container_name: imdb-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: imdb
+    ports:
+      - "5432:5432"

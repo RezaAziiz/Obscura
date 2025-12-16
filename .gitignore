@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Environment variables (PENTING: Jangan upload secret)
+.env
+
+# Build outputs
+dist/
+build/
+.next/
+
+# System
+.DS_Store
