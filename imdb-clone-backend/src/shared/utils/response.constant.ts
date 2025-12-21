@@ -117,4 +117,9 @@ export const responseMessage: TresponseMessage = {
     caseCode: '01',
     message: 'Invalid File Extension',
   },
+  USERNAME_NOT_AVAILABLE: {
+    httpStatus: HttpStatus.BAD_REQUEST,
+    caseCode: '03',
+    message: 'Username is already taken',
+  },
 } as const;
