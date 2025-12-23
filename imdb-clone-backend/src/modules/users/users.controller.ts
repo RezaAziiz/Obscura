@@ -26,4 +26,10 @@ export class UsersController {
   async create(@Body() createUser: CreateUserDto) {
     return this.usersService.createOne(createUser);
   }
+
+  @Get(':user_id')
+  @ResponseMessage(responseMessage.SUCCESS)
+  async findOne(@Param('user_id', ParseUUIDPipe) user_id: string) {
+    return this.usersService.findUserById(user_id);
+  }
 }

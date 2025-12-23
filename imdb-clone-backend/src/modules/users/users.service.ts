@@ -27,7 +27,7 @@ export class UsersService {
           // ambil target kolom yang error (kembaliannya array string)
           const targets = error.meta?.target as string[];
 
-          // logika pengecekan:
+          // logika pengecekan
           if (targets.includes('email')) {
             throw new BadRequestException(responseMessage.EMAIL_NOT_AVAILABLE);
           }
@@ -41,5 +41,12 @@ export class UsersService {
       }
       throw error;
     }
+  }
+  async findUserById(user_id: string) {
+    return await this.prisma.user.findUniqueOrThrow({
+      where: {
+        id: user_id,
+      },
+    });
   }
 }

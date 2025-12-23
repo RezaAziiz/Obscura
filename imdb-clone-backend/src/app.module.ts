@@ -30,7 +30,7 @@ import { GlobalModules } from './modules/global.module';
       useClass: HttpExceptionFilter,
     },
 
-    // F. Global Guard (Auth) -> NANTI KALAU LOGIN SUDAH JADI
+    // F. Global Guard (Auth)
     // {
     //   provide: APP_GUARD,
     //   useClass: BearerAuthGuard,
